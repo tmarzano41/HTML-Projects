@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spring Break Trip Planner</title>
+</head>
+<body>
+<h1>Spring Break Trip Planner</h1>
+<p>Welcome! Plan your spring break by selecting your destination and necessary gear. Stay within your budget!</p>
+
+<form id="tripForm">
+  <div class="section">
+    <h3>Vacation Choices</h3>
+    <label>
+      <input type="radio" name="destination" value="T" required>
+      Touring the National Parks in Wyoming - Airfare and hotel: $300.00
+    </label><br>
+    <label>
+      <input type="radio" name="destination" value="S">
+      Skiing in Colorado - Airfare and hotel: $500.00
+    </label>
+  </div>
+
+  <div class="section">
+    <label for="budget">Enter your budget for the trip ($):</label><br>
+    <input type="number" id="budget" name="budget" min="1" required>
+  </div>
+
+  <div id="gearSelection" class="section gear-selection">
+    <h3>Select Your Gear</h3>
+    <div id="gearOptions"></div>
+  </div>
+
+  <button type="submit">Calculate Trip Costs</button>
+</form>
+
+<div id="result" class="section" style="display: none;">
+  <h3>Trip Results</h3>
+  <p id="output"></p>
+</div>
+
+<script src="assignment5script.js"></script>
+</body>
+</html>

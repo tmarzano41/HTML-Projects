@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 4 BMI Calculator</title>
+</head>
+<body>
+<h1>BMI Calculator</h1>
+<button onclick="calculateBMI()">Calculate BMI</button>
+<script>
+    const poundToKG = 0.45359237;
+    const inchToMeter = 0.0254;
+    const bmiConstant = 703;
+    function calculateTotalInches(feet, inches){
+      return feet*12+inches;
+    }
+    function convertPoundsToKG(pounds){
+      return pounds * poundToKG;
+    }
+    function convertInchesToMeters(inches){
+      return inches * inchToMeter;
+    }
+    function calculateBMIEnglish(weightLB, heightIN){
+      return (weightLB / (heightIN ** 2)) * bmiConstant;
+    }
+    function calculateBMIMetric(weightKG, heightM){
+      return weightKG / (heightM ** 2);
+    }
+    function calculateHealthyWeightRangeInPounds(heightInInches) {
+        const minWeight = (18.5 * (heightInInches ** 2)) / bmiConstant;
+        const maxWeight = (24.9 * (heightInInches ** 2)) / bmiConstant;
+        return { minWeight: minWeight.toFixed(2), maxWeight: maxWeight.toFixed(2) };
+    }
+
+    function calculateHealthyWeightRangeInKg(heightM) {
+        const minWeight = 18.5 * (heightM ** 2);
+        const maxWeight = 24.9 * (heightM ** 2);
+        return { minWeight: minWeight.toFixed(2), maxWeight: maxWeight.toFixed(2) };
+    }
+    function calculateBMI() {
+        const feet = parseFloat(prompt("Enter your height (feet):"));
+        const inches = parseFloat(prompt("Enter your height (inches):"));
+        const weightInPounds = parseFloat(prompt("Enter your weight (pounds):"));
+
+        const heightInInches = calculateTotalInches(feet, inches);
+        const heightInMeters = convertInchesToMeters(heightInInches);
+        const weightInKg = convertPoundsToKG(weightInPounds);
+
+        const bmiEnglish = calculateBMIEnglish(weightInPounds, heightInInches).toFixed(2);
+        const bmiMetric = calculateBMIMetric(weightInKg, heightInMeters).toFixed(2);
+
+        const healthyWeightRangePounds = calculateHealthyWeightRangeInPounds(heightInInches);
+        const healthyWeightRangeKg = calculateHealthyWeightRangeInKg(heightInMeters);
+        alert(`Your BMI (English units): ${bmiEnglish}\n` +
+            `Your BMI (Metric units): ${bmiMetric}\n` +
+            `Healthy weight range for your height (pounds): ${healthyWeightRangePounds.minWeight} - ${healthyWeightRangePounds.maxWeight}\n` +
+            `Healthy weight range for your height (kg): ${healthyWeightRangeKg.minWeight} - ${healthyWeightRangeKg.maxWeight}`);
+    }
+</script>
+</body>
+</html>

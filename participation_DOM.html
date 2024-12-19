@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Participation</title>
+</head>
+<body>
+
+<h2>Multiply and Divide</h2>
+<input type="number" id="num1" placeholder="Enter first number">
+<input type="number" id="num2" placeholder="Enter second number">
+<button onclick="multiply()">Multiply</button>
+<button onclick="divide()">Divide</button>
+<p id="result"></p>
+
+<h2>Finding HTML Elements by querySelector</h2>
+<p>The DOM can be useful</p>
+<p id="newclass">We are learning to use the DOM.</p>
+<button onclick="newFunc()">Get the ID and Count <p> Tags</button>
+<p id="tag"></p>
+<script>
+    function multiply(){
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        document.getElementById("result").innerText = "Result: " + (num1 * num2).toFixed(2);
+    }
+    function divide() {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        document.getElementById("result").innerText = num2 !== 0 ?
+            "Result: " + (num1 / num2).toFixed(2) : "Cannot divide by zero";
+    }
+    function newFunc() {
+        const paragraphs = document.querySelectorAll("p");
+        document.getElementById("newclass").style.color = "blue"; // Change color
+        paragraphs.forEach(p => p.style.color = "purple");
+        document.getElementById("tag").innerText =`Number of selected elements: ${paragraphs}`;
+    }
+</script>
+</body>
+</html>
