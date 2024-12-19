@@ -1,1 +1,1 @@
-# HTML-Projects
+This is the product of my Introduction to Web Design class at Bentley University. Through participation and class assignments, I utilized a multitude of HTML functions to complete a wide variety of tasks, and construct my cohesive website.
